@@ -1,0 +1,115 @@
+#verdemenu {
+    background-color: rgb(1, 207, 11);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.menu-hamburguer {
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 20px;
+    display: flex; /* Garante que as barras sejam flex items */
+}
+
+.barra {
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    transition: 0.3s;
+}
+
+.menu-principal {
+    display: none; /* Inicialmente escondido */
+}
+
+.menu-principal ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Layout horizontal em telas maiores (mas inicialmente escondido) */
+}
+
+.menu-principal li {
+    margin-left: 20px;
+}
+
+.menu-principal li:first-child {
+    margin-left: 0;
+}
+
+.menu-principal a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Estilos para telas menores (mobile) */
+@media (max-width: 768px) {
+    #verdemenu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-hamburguer {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .menu-principal {
+        display: none; /* Escondido por padrão em telas menores */
+        width: 100%;
+        background-color: rgba(1, 207, 11, 0.9);
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 10;
+    }
+
+    .menu-principal ul {
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+
+    .menu-principal li {
+        margin: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-principal li:last-child {
+        border-bottom: none;
+    }
+
+    .menu-principal a {
+        display: block;
+        padding: 15px;
+        color: white;
+        text-align: left;
+    }
+}
+
+/* Classe para mostrar o menu principal (adicionada pelo JavaScript) */
+.menu-principal.mostrar {
+    display: block;
+}
+
+/* Estilos para a animação do ícone (opcional) */
+.menu-hamburguer.aberto .barra:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-hamburguer.aberto .barra:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-hamburguer.aberto .barra:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
